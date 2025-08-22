@@ -4,3 +4,4 @@ Solution: Build a weekly meal planning dashboard with a grocery list
     Diversify meal options by cuisine and base starch (i.e. rice, pasta, potatoes, bread)
     Regularly schedule meals that yield leftovers
     Minimize the number of stores that ingredients come from
+    Allow the ability to add meals which automatically updates the shopping list with the associated ingredients
