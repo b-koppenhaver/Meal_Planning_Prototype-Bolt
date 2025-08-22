@@ -90,7 +90,7 @@ const MealManager: React.FC = () => {
       id: Date.now().toString(),
       name: newMeal.name!,
       description: newMeal.description || '',
-      category: newMeal.category as 'breakfast' | 'lunch' | 'dinner' | 'snack',
+      category: newMeal.category as 'breakfast' | 'lunch' | 'dinner',
       prepTime: newMeal.prepTime || 30,
       servings: newMeal.servings || 4,
       ingredients: selectedIngredients.filter(ing => ing.ingredientId),
