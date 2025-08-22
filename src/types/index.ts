@@ -29,7 +29,7 @@ export interface Meal {
   id: string;
   name: string;
   description: string;
-  category: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  category: 'breakfast' | 'lunch' | 'dinner' ;
   prepTime: number;
   servings: number;
   ingredients: MealIngredient[];
@@ -40,7 +40,7 @@ export interface PlannedMeal {
   id: string;
   mealId: string;
   date: string;
-  mealType: 'breakfast' | 'lunch' | 'dinner' | 'snack';
+  mealType: 'breakfast' | 'lunch' | 'dinner' ;
   servings: number;
 }
 
