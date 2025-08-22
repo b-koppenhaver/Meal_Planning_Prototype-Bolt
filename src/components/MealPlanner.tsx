@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Calendar, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
-import { meals, plannedMeals } from '../data/mockData';
+import { meals, plannedMeals, ingredients } from '../data/mockData';
 import { PlannedMeal, Meal } from '../types';
 
 const MealPlanner: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [showAddMeal, setShowAddMeal] = useState(false);
+  const [newPlannedMeal, setNewPlannedMeal] = useState({
+    mealId: '',
+    mealType: 'dinner' as 'breakfast' | 'lunch' | 'dinner' | 'snack',
+    servings: 4
+  });
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear();
@@ -53,6 +58,32 @@ const MealPlanner: React.FC = () => {
       }
       return newDate;
     });
+  };
+
+  const addMealPlan = () => {
+    if (!selectedDate || !newPlannedMeal.mealId) {
+      alert('Please select a date and meal');
+      return;
+    }
+
+    const plannedMeal: PlannedMeal = {
+      id: Date.now().toString(),
+      mealId: newPlannedMeal.mealId,
+      date: selectedDate,
+      mealType: newPlannedMeal.mealType,
+      servings: newPlannedMeal.servings
+    };
+
+    // Add to planned meals array (in a real app, this would be an API call)
+    plannedMeals.push(plannedMeal);
+    
+    // Reset form
+    setNewPlannedMeal({
+      mealId: '',
+      mealType: 'dinner',
+      servings: 4
+    });
+    setShowAddMeal(false);
   };
 
   const monthNames = [
@@ -204,11 +235,106 @@ const MealPlanner: React.FC = () => {
               <div className="text-center py-8">
                 <Calendar className="mx-auto h-12 w-12 text-gray-300 mb-4" />
                 <p className="text-gray-500">No meals planned for this day</p>
-                <button className="mt-2 text-emerald-600 hover:text-emerald-700 text-sm font-medium">
+                <button 
+                  onClick={() => setShowAddMeal(true)}
+                  className="mt-2 text-emerald-600 hover:text-emerald-700 text-sm font-medium"
+                >
                   Add a meal plan
                 </button>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {showAddMeal && selectedDate && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-4">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              Add Meal Plan for {new Date(selectedDate).toLocaleDateString()}
+            </h3>
+            
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Select Meal</label>
+                <select
+                  value={newPlannedMeal.mealId}
+                  onChange={(e) => setNewPlannedMeal({ ...newPlannedMeal, mealId: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                >
+                  <option value="">Choose a meal</option>
+                  {meals.map((meal) => (
+                    <option key={meal.id} value={meal.id}>
+                      {meal.name} ({meal.category})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Meal Type</label>
+                <select
+                  value={newPlannedMeal.mealType}
+                  onChange={(e) => setNewPlannedMeal({ ...newPlannedMeal, mealType: e.target.value as any })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                >
+                  <option value="breakfast">Breakfast</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+                  <option value="snack">Snack</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Servings</label>
+                <input
+                  type="number"
+                  value={newPlannedMeal.servings}
+                  onChange={(e) => setNewPlannedMeal({ ...newPlannedMeal, servings: parseInt(e.target.value) })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  min="1"
+                />
+              </div>
+
+              {newPlannedMeal.mealId && (
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <h4 className="text-sm font-medium text-gray-700 mb-2">Ingredients that will be added to shopping list:</h4>
+                  <div className="text-xs text-gray-600 space-y-1">
+                    {(() => {
+                      const selectedMeal = meals.find(m => m.id === newPlannedMeal.mealId);
+                      if (!selectedMeal) return null;
+                      
+                      return selectedMeal.ingredients.map((mealIng, index) => {
+                        const ingredient = ingredients.find(i => i.id === mealIng.ingredientId);
+                        if (!ingredient) return null;
+                        
+                        const scaledQuantity = (mealIng.quantity * newPlannedMeal.servings) / selectedMeal.servings;
+                        return (
+                          <div key={index}>
+                            • {ingredient.name}: {scaledQuantity.toFixed(1)} {ingredient.unit}
+                          </div>
+                        );
+                      });
+                    })()}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="flex space-x-3 mt-6">
+              <button
+                onClick={() => setShowAddMeal(false)}
+                className="flex-1 px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={addMealPlan}
+                className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors duration-200"
+              >
+                Add to Plan
+              </button>
+            </div>
           </div>
         </div>
       )}
