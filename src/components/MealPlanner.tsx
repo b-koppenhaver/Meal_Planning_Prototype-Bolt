@@ -179,8 +179,7 @@ const MealPlanner: React.FC = () => {
                       const mealTypeColors = {
                         breakfast: 'bg-orange-100 text-orange-800',
                         lunch: 'bg-blue-100 text-blue-800',
-                        dinner: 'bg-purple-100 text-purple-800',
-                        snack: 'bg-green-100 text-green-800'
+                        dinner: 'bg-purple-100 text-purple-800'
                       };
 
                       return (
