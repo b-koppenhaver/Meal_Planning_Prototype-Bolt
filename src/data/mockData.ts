@@ -33,7 +33,7 @@ export const ingredients: Ingredient[] = [
     name: 'Chicken Breast',
     category: 'protein',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 6.99, inStock: true },
       { storeId: '2', price: 8.49, inStock: true },
       { storeId: '3', price: 5.99, inStock: true },
@@ -45,7 +45,7 @@ export const ingredients: Ingredient[] = [
     name: 'Rice',
     category: 'grain',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 2.49, inStock: true },
       { storeId: '2', price: 3.99, inStock: true },
       { storeId: '3', price: 1.99, inStock: true }
@@ -56,7 +56,7 @@ export const ingredients: Ingredient[] = [
     name: 'Broccoli',
     category: 'vegetable',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 2.99, inStock: true },
       { storeId: '2', price: 3.49, inStock: true },
       { storeId: '3', price: 2.49, inStock: false }
@@ -67,7 +67,7 @@ export const ingredients: Ingredient[] = [
     name: 'Ground Beef',
     category: 'protein',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 5.99, inStock: true },
       { storeId: '3', price: 4.99, inStock: true },
       { storeId: '4', price: 6.49, inStock: true }
@@ -78,7 +78,7 @@ export const ingredients: Ingredient[] = [
     name: 'Bell Peppers',
     category: 'vegetable',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 3.49, inStock: true },
       { storeId: '2', price: 3.99, inStock: true },
       { storeId: '3', price: 2.99, inStock: true }
@@ -89,7 +89,7 @@ export const ingredients: Ingredient[] = [
     name: 'Onions',
     category: 'vegetable',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 1.49, inStock: true },
       { storeId: '2', price: 1.99, inStock: true },
       { storeId: '3', price: 1.29, inStock: true }
@@ -100,7 +100,7 @@ export const ingredients: Ingredient[] = [
     name: 'Soy Sauce',
     category: 'condiment',
     unit: 'bottle',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 2.99, inStock: true },
       { storeId: '2', price: 3.49, inStock: true },
       { storeId: '3', price: 2.49, inStock: true }
@@ -111,7 +111,7 @@ export const ingredients: Ingredient[] = [
     name: 'Coconut Milk',
     category: 'dairy',
     unit: 'can',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 1.99, inStock: true },
       { storeId: '2', price: 2.49, inStock: true },
       { storeId: '3', price: 1.79, inStock: false }
@@ -122,7 +122,7 @@ export const ingredients: Ingredient[] = [
     name: 'Curry Powder',
     category: 'spice',
     unit: 'jar',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 3.99, inStock: true },
       { storeId: '2', price: 4.49, inStock: true },
       { storeId: '3', price: 3.49, inStock: true }
@@ -133,7 +133,7 @@ export const ingredients: Ingredient[] = [
     name: 'Potatoes',
     category: 'vegetable',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 1.99, inStock: true },
       { storeId: '2', price: 2.49, inStock: true },
       { storeId: '3', price: 1.69, inStock: true }
@@ -144,7 +144,7 @@ export const ingredients: Ingredient[] = [
     name: 'Eggs',
     category: 'protein',
     unit: 'dozen',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 3.49, inStock: true },
       { storeId: '2', price: 4.99, inStock: true },
       { storeId: '3', price: 2.99, inStock: true }
@@ -155,7 +155,7 @@ export const ingredients: Ingredient[] = [
     name: 'Oats',
     category: 'grain',
     unit: 'lb',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 2.99, inStock: true },
       { storeId: '2', price: 3.99, inStock: true },
       { storeId: '3', price: 2.49, inStock: true }
@@ -166,7 +166,7 @@ export const ingredients: Ingredient[] = [
     name: 'Milk',
     category: 'dairy',
     unit: 'gallon',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 3.99, inStock: true },
       { storeId: '2', price: 4.49, inStock: true },
       { storeId: '3', price: 3.49, inStock: true }
@@ -177,7 +177,7 @@ export const ingredients: Ingredient[] = [
     name: 'Berries',
     category: 'fruit',
     unit: 'cup',
-    storeAvailability: [
+    availability: [
       { storeId: '1', price: 4.99, inStock: true },
       { storeId: '2', price: 5.99, inStock: true },
       { storeId: '3', price: 4.49, inStock: false }
