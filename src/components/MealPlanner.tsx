@@ -9,7 +9,7 @@ const MealPlanner: React.FC = () => {
   const [showAddMeal, setShowAddMeal] = useState(false);
   const [newPlannedMeal, setNewPlannedMeal] = useState({
     mealId: '',
-    mealType: 'dinner' as 'breakfast' | 'lunch' | 'dinner' | 'snack',
+    mealType: 'dinner' as 'breakfast' | 'lunch' | 'dinner',
     servings: 4
   });
 
