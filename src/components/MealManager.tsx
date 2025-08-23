@@ -230,7 +230,7 @@ const MealManager: React.FC = () => {
                         <div>
                           <p className="font-medium text-gray-900">{ingredient.name}</p>
                           <p className="text-sm text-gray-600">
-                            {ingredient.quantity} {ingredient.unit}
+                            {ingredient.quantity}
                           </p>
                         </div>
                         {bestStore && (
