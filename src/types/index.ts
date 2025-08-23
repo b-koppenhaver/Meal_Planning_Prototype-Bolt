@@ -15,7 +15,6 @@ export interface Ingredient {
 
 export interface IngredientAvailability {
   storeId: string;
-  price: number;
   inStock: boolean;
   quality: 'excellent' | 'good' | 'fair';
 }
