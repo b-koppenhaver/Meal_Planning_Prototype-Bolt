@@ -29,9 +29,9 @@ export const ingredients: Ingredient[] = [
     name: 'Chicken Thighs',
     category: 'protein',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', price: 8.99, preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', price: 7.49, preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', price: 8.29, preferenceRank: 3 }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -83,11 +83,11 @@ export const ingredients: Ingredient[] = [
     name: 'Onions',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', price: 12.99, preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', price: 4.49, preferenceRank: 2 },
-      { storeId: '4', inStock: true, quality: 'fair', price: 5.99, preferenceRank: 3 },
-      { storeId: '5', inStock: true, quality: 'excellent', price: 2.99, preferenceRank: 1 }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
+      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 1 }
     ]
   },
   {
@@ -95,11 +95,11 @@ export const ingredients: Ingredient[] = [
     name: 'Tomatoes',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true, quality: 'good', price: 3.49, preferenceRank: 2 },
-      { storeId: '2', inStock: true, quality: 'fair', price: 2.99, preferenceRank: 3 },
-      { storeId: '3', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
-      { storeId: '5', inStock: false, quality: 'good', price: 3.99, preferenceRank: 2 }
+      { storeId: '1', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 3 },
+      { storeId: '3', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '5', inStock: false, quality: 'good', preferenceRank: 2 }
     ]
   },
   {
@@ -107,10 +107,10 @@ export const ingredients: Ingredient[] = [
     name: 'Milk',
     category: 'dairy',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 },
-      { storeId: '3', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'fair', price: 1.49, preferenceRank: 2 },
-      { storeId: '5', inStock: true, quality: 'excellent', price: 2.49, preferenceRank: 3 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 3 },
       { storeId: '4', inStock: true }
     ]
   },
@@ -119,8 +119,8 @@ export const ingredients: Ingredient[] = [
     name: 'Steak Seasoning',
     category: 'spice',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', price: 2.49, preferenceRank: 2 },
-      { storeId: '5', inStock: true, quality: 'excellent', price: 3.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 1 },
       { storeId: '4', inStock: true }
     ]
   },
@@ -129,10 +129,10 @@ export const ingredients: Ingredient[] = [
     name: 'Potatoes',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', price: 4.29, preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'fair', price: 3.49, preferenceRank: 4 },
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 4 },
       { storeId: '4', inStock: true }
     ]
   },
@@ -141,8 +141,8 @@ export const ingredients: Ingredient[] = [
     name: 'Eggs',
     category: 'protein',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', price: 3.49, preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'good', price: 3.49, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 1 },
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true },
       { storeId: '4', inStock: true }
@@ -154,10 +154,10 @@ export const ingredients: Ingredient[] = [
     name: 'Cheese',
     category: 'dairy',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', price: 4.29, preferenceRank: 2 },
-      { storeId: '4', inStock: true, quality: 'fair', price: 3.49, preferenceRank: 3 },
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true }
     ]
@@ -167,10 +167,10 @@ export const ingredients: Ingredient[] = [
     name: 'Yogurt',
     category: 'dairy',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', price: 3.99, preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', price: 2.99, preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', price: 3.29, preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'fair', price: 2.49, preferenceRank: 4 }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 4 }
     ]
   },
   {
@@ -178,8 +178,8 @@ export const ingredients: Ingredient[] = [
     name: 'Berries',
     category: 'fruit',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', price: 2.99, preferenceRank: 1 },
-      { storeId: '3', inStock: true, quality: 'excellent', price: 3.49, preferenceRank: 2 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'excellent', preferenceRank: 2 },
       { storeId: '3', inStock: false }
     ]
   }
@@ -239,25 +239,25 @@ export const plannedMeals: PlannedMeal[] = [
   {
     id: '1',
     mealId: '1',
-    date: '2025-01-15',
+    date: '2025-08-24',
     mealType: 'dinner'
   },
   {
     id: '2',
     mealId: '2',
-    date: '2025-01-16',
+    date: '2025-08-25',
     mealType: 'dinner'
   },
   {
     id: '3',
     mealId: '3',
-    date: '2025-01-17',
+    date: '2025-08-26',
     mealType: 'dinner'
   },
   {
     id: '4',
     mealId: '4',
-    date: '2025-01-18',
+    date: '2025-08-26',
     mealType: 'breakfast'
   }
 ];
