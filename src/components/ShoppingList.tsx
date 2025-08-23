@@ -231,7 +231,7 @@ const ShoppingList: React.FC = () => {
                                   ? 'text-gray-500 line-through' 
                                   : 'text-gray-900'
                               }`}>
-                                {ingredient.name}
+                                {item.quantity.toFixed(1)} {ingredient.category}
                               </p>
                             </div>
                           </div>
@@ -291,7 +291,7 @@ const ShoppingList: React.FC = () => {
                             ? 'text-gray-500 line-through' 
                             : 'text-gray-900'
                         }`}>
-                          {ingredient.name}
+                          {ingredient.category}
                         </p>
                       </div>
                     </div>
