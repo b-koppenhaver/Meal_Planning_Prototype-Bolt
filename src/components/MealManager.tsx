@@ -235,7 +235,6 @@ const MealManager: React.FC = () => {
                         {bestStore && (
                           <div className="text-right">
                             <p className="text-sm font-medium text-emerald-600">{bestStore.name}</p>
-                            <p className="text-xs text-gray-500">{bestStore.location}</p>
                           </div>
                         )}
                       </div>
