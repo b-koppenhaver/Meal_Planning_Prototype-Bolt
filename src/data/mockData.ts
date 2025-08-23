@@ -3,184 +3,166 @@ import { Store, Ingredient, Meal, PlannedMeal } from '../types';
 export const stores: Store[] = [
   {
     id: '1',
-    name: 'Fresh Market',
-    location: '123 Main St',
-    type: 'grocery'
+    name: 'Costco'
   },
   {
     id: '2',
-    name: 'Organic Foods Co',
-    location: '456 Oak Ave',
-    type: 'organic'
+    name: 'Aldi'
   },
   {
     id: '3',
-    name: 'Budget Grocers',
-    location: '789 Pine Rd',
-    type: 'discount'
+    name: 'Trader Joes'
   },
   {
     id: '4',
-    name: 'Specialty Meats',
-    location: '321 Elm St',
-    type: 'butcher'
+    name: 'Harris Teeter'
+  },
+  {
+    id: '5',
+    name: 'Lotte'
   }
 ];
 
 export const ingredients: Ingredient[] = [
   {
     id: '1',
-    name: 'Chicken Breast',
+    name: 'Chicken Thighs',
     category: 'protein',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 6.99, inStock: true },
-      { storeId: '2', price: 8.49, inStock: true },
-      { storeId: '3', price: 5.99, inStock: true },
-      { storeId: '4', price: 7.99, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
     id: '2',
     name: 'Rice',
-    category: 'grain',
-    unit: 'lb',
+    category: 'starch',
     availability: [
-      { storeId: '1', price: 2.49, inStock: true },
-      { storeId: '2', price: 3.99, inStock: true },
-      { storeId: '3', price: 1.99, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '3',
     name: 'Broccoli',
     category: 'vegetable',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 2.99, inStock: true },
-      { storeId: '2', price: 3.49, inStock: true },
-      { storeId: '3', price: 2.49, inStock: false }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: false }
     ]
   },
   {
     id: '4',
     name: 'Ground Beef',
     category: 'protein',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 5.99, inStock: true },
-      { storeId: '3', price: 4.99, inStock: true },
-      { storeId: '4', price: 6.49, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
     id: '5',
     name: 'Bell Peppers',
     category: 'vegetable',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 3.49, inStock: true },
-      { storeId: '2', price: 3.99, inStock: true },
-      { storeId: '3', price: 2.99, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '6',
     name: 'Onions',
     category: 'vegetable',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 1.49, inStock: true },
-      { storeId: '2', price: 1.99, inStock: true },
-      { storeId: '3', price: 1.29, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '7',
     name: 'Soy Sauce',
     category: 'condiment',
-    unit: 'bottle',
     availability: [
-      { storeId: '1', price: 2.99, inStock: true },
-      { storeId: '2', price: 3.49, inStock: true },
-      { storeId: '3', price: 2.49, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '8',
     name: 'Coconut Milk',
     category: 'dairy',
-    unit: 'can',
     availability: [
-      { storeId: '1', price: 1.99, inStock: true },
-      { storeId: '2', price: 2.49, inStock: true },
-      { storeId: '3', price: 1.79, inStock: false }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: false }
     ]
   },
   {
     id: '9',
     name: 'Curry Powder',
     category: 'spice',
-    unit: 'jar',
     availability: [
-      { storeId: '1', price: 3.99, inStock: true },
-      { storeId: '2', price: 4.49, inStock: true },
-      { storeId: '3', price: 3.49, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '10',
     name: 'Potatoes',
     category: 'vegetable',
-    unit: 'lb',
     availability: [
-      { storeId: '1', price: 1.99, inStock: true },
-      { storeId: '2', price: 2.49, inStock: true },
-      { storeId: '3', price: 1.69, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '11',
     name: 'Eggs',
     category: 'protein',
-    unit: 'dozen',
     availability: [
-      { storeId: '1', price: 3.49, inStock: true },
-      { storeId: '2', price: 4.99, inStock: true },
-      { storeId: '3', price: 2.99, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '12',
     name: 'Oats',
-    category: 'grain',
-    unit: 'lb',
+    category: 'starch',
     availability: [
-      { storeId: '1', price: 2.99, inStock: true },
-      { storeId: '2', price: 3.99, inStock: true },
-      { storeId: '3', price: 2.49, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '13',
     name: 'Milk',
     category: 'dairy',
-    unit: 'gallon',
     availability: [
-      { storeId: '1', price: 3.99, inStock: true },
-      { storeId: '2', price: 4.49, inStock: true },
-      { storeId: '3', price: 3.49, inStock: true }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
     id: '14',
     name: 'Berries',
     category: 'fruit',
-    unit: 'cup',
     availability: [
-      { storeId: '1', price: 4.99, inStock: true },
-      { storeId: '2', price: 5.99, inStock: true },
-      { storeId: '3', price: 4.49, inStock: false }
+      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: false }
     ]
   }
 ];
