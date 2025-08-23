@@ -170,6 +170,16 @@ export const ingredients: Ingredient[] = [
       { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 }
     ]
   }
+  {
+    id: '15',
+    name: 'Soy Sauce',
+    category: 'condiment',
+    availability: [
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 1 }
+    ]
+  }
 ];
 
 export const meals: Meal[] = [
@@ -194,7 +204,8 @@ export const meals: Meal[] = [
     ingredients: [
       { ingredientId: '4', quantity: 2 },
       { ingredientId: '5', quantity: 1 },
-      { ingredientId: '6', quantity: 0.5 }
+      { ingredientId: '6', quantity: 0.5 },
+      { ingredientId: '15', quantity: 0.5 }
     ]
   },
   {
@@ -205,8 +216,7 @@ export const meals: Meal[] = [
     prepTime: 10,
     ingredients: [
       { ingredientId: '11', quantity: 3 },
-      { ingredientId: '13', quantity: 0.5 },
-      { ingredientId: '14', quantity: 1 }
+      { ingredientId: '12', quantity: 0.5 }
     ]
   },
   {
@@ -216,8 +226,7 @@ export const meals: Meal[] = [
     servings: 1,
     prepTime: 5,
     ingredients: [
-      { ingredientId: '11', quantity: 2 },
-      { ingredientId: '8', quantity: 0.25 }
+      { ingredientId: '11', quantity: 2 }
     ]
   }
 ];
