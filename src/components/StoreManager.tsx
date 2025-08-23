@@ -84,7 +84,6 @@ const StoreManager: React.FC = () => {
                       <h4 className="font-semibold text-gray-900">{store.name}</h4>
                       <div className="flex items-center mt-1 text-sm text-gray-600">
                         <MapPin size={14} className="mr-1" />
-                        {store.location}
                       </div>
                     </div>
                     <span className={`px-2 py-1 rounded-full text-xs font-medium flex items-center ${getStoreTypeColor(store.type)}`}>
