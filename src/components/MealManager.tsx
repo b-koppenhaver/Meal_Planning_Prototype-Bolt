@@ -39,8 +39,7 @@ const MealManager: React.FC = () => {
     if (!ingredient || ingredient.availability.length === 0) return null;
     
     const bestAvail = ingredient.availability
-      .filter(a => a.inStock)
-      .sort((a, b) => a.price - b.price)[0];
+      .filter(a => a.inStock);
     
     if (!bestAvail) return null;
     
