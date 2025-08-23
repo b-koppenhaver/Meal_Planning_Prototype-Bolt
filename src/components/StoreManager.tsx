@@ -5,25 +5,6 @@ import { stores, ingredients } from '../data/mockData';
 const StoreManager: React.FC = () => {
   const [selectedStore, setSelectedStore] = useState<string | null>(null);
 
-  const getStoreTypeIcon = (type: string) => {
-    switch (type) {
-      case 'grocery': return <Store className="h-5 w-5" />;
-      case 'butcher': return <Package className="h-5 w-5" />;
-      case 'farmer': return <TrendingUp className="h-5 w-5" />;
-      case 'specialty': return <MapPin className="h-5 w-5" />;
-      default: return <Store className="h-5 w-5" />;
-    }
-  };
-
-  const getStoreTypeColor = (type: string) => {
-    switch (type) {
-      case 'grocery': return 'bg-blue-100 text-blue-800';
-      case 'butcher': return 'bg-red-100 text-red-800';
-      case 'farmer': return 'bg-green-100 text-green-800';
-      case 'specialty': return 'bg-purple-100 text-purple-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
 
   const getStoreIngredients = (storeId: string) => {
     return ingredients.filter(ingredient => 
