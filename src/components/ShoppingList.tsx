@@ -82,16 +82,13 @@ const ShoppingList: React.FC = () => {
       for (const primaryStoreName of primaryStores) {
         const primaryStore = stores.find(s => s.name === primaryStoreName);
         if (primaryStore) {
-          const availabilities = ingredient.availability.filter(a => 
+          const availability = ingredient.availability.find(a => 
             a.storeId === primaryStore.id && a.inStock
           );
-          if (availabilities.length > 0) {
-            // Use the best availability at this store (lowest preference rank)
-            const bestAvailability = availabilities.sort((a, b) => a.preferenceRank - b.preferenceRank)[0];
+          if (availability) {
             return {
               ...item,
-              bestStore: primaryStoreName,
-              estimatedCost: bestAvailability.price * item.quantity
+              bestStore: primaryStoreName
             };
           }
         }
@@ -100,7 +97,6 @@ const ShoppingList: React.FC = () => {
       return item;
     });
   };
-
   const rawShoppingList = generateShoppingList();
   const shoppingList = optimizeStoreSelection(rawShoppingList);
   const uniqueStores = new Set(shoppingList.map(item => item.bestStore)).size;
@@ -282,7 +278,7 @@ const ShoppingList: React.FC = () => {
                             {ingredient.name}
                           </h4>
                           <p className="text-sm text-gray-600">
-                            {item.quantity} {ingredient.unit} - {item.bestStore}
+                            Available at {item.bestStore}
                           </p>
                         </div>
                       </div>
