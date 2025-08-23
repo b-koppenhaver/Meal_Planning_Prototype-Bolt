@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Check, Store, DollarSign, MapPin } from 'lucide-react';
+import { ShoppingCart, Check, Store, MapPin } from 'lucide-react';
 import { plannedMeals, meals, ingredients, stores } from '../data/mockData';
 import { ShoppingListItem } from '../types';
 
@@ -29,15 +29,14 @@ const ShoppingList: React.FC = () => {
         return {
           ingredientId,
           quantity,
-          bestStore: 'Unknown',
-          estimatedCost: 0
+          bestStore: 'Unknown'
         };
       }
 
-      // Find the best store considering price and availability
+      // Find a store with availability
       const inStockAvailability = ingredient.availability.filter(a => a.inStock);
       const bestAvailability = inStockAvailability.length > 0 
-        ? inStockAvailability.sort((a, b) => a.price - b.price)[0]
+        ? inStockAvailability[0]
         : ingredient.availability[0];
 
       const bestStore = stores.find(s => s.id === bestAvailability?.storeId);
@@ -45,8 +44,7 @@ const ShoppingList: React.FC = () => {
       return {
         ingredientId,
         quantity,
-        bestStore: bestStore?.name || 'Unknown',
-        estimatedCost: (bestAvailability?.price || 0) * quantity
+        bestStore: bestStore?.name || 'Unknown'
       };
     });
   };
@@ -54,22 +52,16 @@ const ShoppingList: React.FC = () => {
   // Optimize store selection to minimize number of stores
   const optimizeStoreSelection = (items: ShoppingListItem[]): ShoppingListItem[] => {
     const storeItemCounts: { [storeName: string]: number } = {};
-    const storeItemValues: { [storeName: string]: number } = {};
     
-    // Count items and total value per store
+    // Count items per store
     items.forEach(item => {
       const storeName = item.bestStore;
       storeItemCounts[storeName] = (storeItemCounts[storeName] || 0) + 1;
-      storeItemValues[storeName] = (storeItemValues[storeName] || 0) + item.estimatedCost;
     });
     
-    // Find primary stores (those with most items or highest value)
+    // Find primary stores (those with most items)
     const primaryStores = Object.keys(storeItemCounts)
-      .sort((a, b) => {
-        const aScore = storeItemCounts[a] * 2 + storeItemValues[a] * 0.1;
-        const bScore = storeItemCounts[b] * 2 + storeItemValues[b] * 0.1;
-        return bScore - aScore;
-      })
+      .sort((a, b) => storeItemCounts[b] - storeItemCounts[a])
       .slice(0, 2); // Limit to top 2 stores
     
     // Reassign items to primary stores when possible
@@ -85,16 +77,10 @@ const ShoppingList: React.FC = () => {
             a.storeId === primaryStore.id && a.inStock
           );
           if (availability) {
-            // Only switch if price difference is reasonable (within 20%)
-            const currentPrice = item.estimatedCost / item.quantity;
-            const priceDifference = Math.abs(availability.price - currentPrice) / currentPrice;
-            if (priceDifference <= 0.2) {
-              return {
-                ...item,
-                bestStore: primaryStoreName,
-                estimatedCost: availability.price * item.quantity
-              };
-            }
+            return {
+              ...item,
+              bestStore: primaryStoreName
+            };
           }
         }
       }
@@ -104,7 +90,6 @@ const ShoppingList: React.FC = () => {
   };
   const rawShoppingList = generateShoppingList();
   const shoppingList = optimizeStoreSelection(rawShoppingList);
-  const totalCost = shoppingList.reduce((sum, item) => sum + item.estimatedCost, 0);
   const uniqueStores = new Set(shoppingList.map(item => item.bestStore)).size;
 
   const toggleCheck = (ingredientId: string) => {
@@ -157,9 +142,6 @@ const ShoppingList: React.FC = () => {
           <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">
             {uniqueStores} {uniqueStores === 1 ? 'Store' : 'Stores'}
           </div>
-          <div className="bg-emerald-100 text-emerald-800 px-4 py-2 rounded-lg font-medium">
-            Total: ${totalCost.toFixed(2)}
-          </div>
         </div>
       </div>
 
@@ -177,7 +159,6 @@ const ShoppingList: React.FC = () => {
             // Grouped by store view
             Object.entries(groupedByStore).map(([storeName, items]) => {
               const storeDetails = getStoreDetails(storeName);
-              const storeCost = items.reduce((sum, item) => sum + item.estimatedCost, 0);
               
               return (
                 <div key={storeName} className="bg-white rounded-xl shadow-md border border-gray-100">
@@ -192,12 +173,12 @@ const ShoppingList: React.FC = () => {
                           {storeDetails && (
                             <div className="flex items-center mt-1 text-sm text-gray-600">
                               <MapPin size={14} className="mr-1" />
+                              {storeDetails.location}
                             </div>
                           )}
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="text-lg font-bold text-gray-900">${storeCost.toFixed(2)}</p>
                         <p className="text-sm text-gray-600">{items.length} items</p>
                       </div>
                     </div>
@@ -250,7 +231,7 @@ const ShoppingList: React.FC = () => {
                                   ? 'text-gray-500 line-through' 
                                   : 'text-gray-900'
                               }`}>
-                                ${item.estimatedCost.toFixed(2)}
+                                {ingredient.name}
                               </p>
                             </div>
                           </div>
@@ -310,7 +291,7 @@ const ShoppingList: React.FC = () => {
                             ? 'text-gray-500 line-through' 
                             : 'text-gray-900'
                         }`}>
-                          ${item.estimatedCost.toFixed(2)}
+                          {ingredient.name}
                         </p>
                       </div>
                     </div>
