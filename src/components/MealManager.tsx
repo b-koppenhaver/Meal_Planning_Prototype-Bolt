@@ -29,7 +29,6 @@ const MealManager: React.FC = () => {
       return {
         name: ingredient?.name || 'Unknown',
         quantity: mi.quantity,
-        unit: ingredient?.unit || '',
         availability: ingredient?.availability || []
       };
     });
