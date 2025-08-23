@@ -29,8 +29,7 @@ const ShoppingList: React.FC = () => {
         return {
           ingredientId,
           quantity,
-          bestStore: 'Unknown',
-          estimatedCost: 0
+          bestStore: 'Unknown'
         };
       }
 
@@ -234,14 +233,7 @@ const ShoppingList: React.FC = () => {
                                 }`}>
                                   {ingredient.name}
                                 </h4>
-                                <p className="text-sm text-gray-600">
-                                  Qty: {item.quantity.toFixed(1)} • ${item.estimatedCost.toFixed(2)}
-                                </p>
                               </div>
-                            </div>
-                            <div className="text-right">
-                              <p className="text-sm font-medium text-gray-700">${item.estimatedCost.toFixed(2)}</p>
-                              <p className="text-xs text-gray-500">Qty: {item.quantity.toFixed(1)}</p>
                             </div>
                           </div>
                         );
@@ -290,12 +282,9 @@ const ShoppingList: React.FC = () => {
                             {ingredient.name}
                           </h4>
                           <p className="text-sm text-gray-600">
-                            {item.bestStore} • Qty: {item.quantity.toFixed(1)} • ${item.estimatedCost.toFixed(2)}
+                            {item.quantity} {ingredient.unit} - {item.bestStore}
                           </p>
                         </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-medium text-gray-700">${item.estimatedCost.toFixed(2)}</p>
                       </div>
                     </div>
                   );
@@ -303,20 +292,6 @@ const ShoppingList: React.FC = () => {
               </div>
             </div>
           )}
-        </div>
-      )}
-      
-      {shoppingList.length > 0 && (
-        <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-gray-900">Shopping Summary</h3>
-            <div className="text-right">
-              <p className="text-2xl font-bold text-gray-900">
-                ${shoppingList.reduce((total, item) => total + item.estimatedCost, 0).toFixed(2)}
-              </p>
-              <p className="text-sm text-gray-600">Total estimated cost</p>
-            </div>
-          </div>
         </div>
       )}
     </div>
