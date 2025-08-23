@@ -31,8 +31,7 @@ export const ingredients: Ingredient[] = [
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true }
+      { storeId: '3', inStock: true }
     ]
   },
   {
@@ -42,7 +41,9 @@ export const ingredients: Ingredient[] = [
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
@@ -52,7 +53,9 @@ export const ingredients: Ingredient[] = [
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: false }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
@@ -61,8 +64,8 @@ export const ingredients: Ingredient[] = [
     category: 'protein',
     availability: [
       { storeId: '1', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true }
+      { storeId: '2', inStock: true },
+      { storeId: '3', inStock: true }
     ]
   },
   {
@@ -70,9 +73,9 @@ export const ingredients: Ingredient[] = [
     name: 'Bell Peppers',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
@@ -80,9 +83,10 @@ export const ingredients: Ingredient[] = [
     name: 'Onions',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true },
+      { storeId: '5', inStock: true }
     ]
   },
   {
@@ -90,29 +94,28 @@ export const ingredients: Ingredient[] = [
     name: 'Soy Sauce',
     category: 'condiment',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '5', inStock: true }
     ]
   },
   {
     id: '8',
-    name: 'Coconut Milk',
+    name: 'Milk',
     category: 'dairy',
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: false }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
     id: '9',
-    name: 'Curry Powder',
+    name: 'Steak Seasoning',
     category: 'spice',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '4', inStock: true }
     ]
   },
   {
@@ -122,7 +125,8 @@ export const ingredients: Ingredient[] = [
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
     ]
   },
   {
@@ -132,25 +136,25 @@ export const ingredients: Ingredient[] = [
     availability: [
       { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '3', inStock: true },
+      { storeId: '4', inStock: true }
+
     ]
   },
   {
     id: '12',
-    name: 'Oats',
+    name: 'Bread',
     category: 'starch',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true }
     ]
   },
   {
     id: '13',
-    name: 'Milk',
+    name: 'Yogurt',
     category: 'dairy',
     availability: [
-      { storeId: '1', inStock: true },
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true }
     ]
@@ -195,19 +199,6 @@ export const meals: Meal[] = [
   },
   {
     id: '3',
-    name: 'Vegetable Curry',
-    category: 'dinner',
-    servings: 8,
-    prepTime: 45,
-    ingredients: [
-      { ingredientId: '8', quantity: 2 },
-      { ingredientId: '9', quantity: 1 },
-      { ingredientId: '10', quantity: 2 },
-      { ingredientId: '6', quantity: 1 }
-    ]
-  },
-  {
-    id: '4',
     name: 'Breakfast Bowl',
     category: 'breakfast',
     servings: 2,
@@ -219,14 +210,13 @@ export const meals: Meal[] = [
     ]
   },
   {
-    id: '5',
+    id: '4',
     name: 'Scrambled Eggs',
     category: 'breakfast',
     servings: 3,
     prepTime: 15,
     ingredients: [
-      { ingredientId: '11', quantity: 1 },
-      { ingredientId: '13', quantity: 0.25 }
+      { ingredientId: '11', quantity: 1 }
     ]
   }
 ];
@@ -254,12 +244,6 @@ export const plannedMeals: PlannedMeal[] = [
     id: '4',
     mealId: '4',
     date: '2025-01-15',
-    mealType: 'breakfast'
-  },
-  {
-    id: '5',
-    mealId: '5',
-    date: '2025-01-16',
     mealType: 'breakfast'
   }
 ];
