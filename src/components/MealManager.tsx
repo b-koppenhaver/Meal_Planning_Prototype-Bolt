@@ -12,7 +12,6 @@ const MealManager: React.FC = () => {
     category: 'dinner',
     prepTime: 30,
     servings: 4,
-    ingredients: [],
     instructions: ['']
   });
   const [selectedIngredients, setSelectedIngredients] = useState<MealIngredient[]>([]);
@@ -38,12 +37,11 @@ const MealManager: React.FC = () => {
     const ingredient = ingredients.find(i => i.id === ingredientId);
     if (!ingredient || ingredient.availability.length === 0) return null;
     
-    const bestAvail = ingredient.availability
-      .filter(a => a.inStock);
+    const inStockAvailability = ingredient.availability.filter(a => a.inStock);
     
-    if (!bestAvail) return null;
+    if (inStockAvailability.length === 0) return null;
     
-    return stores.find(s => s.id === bestAvail.storeId);
+    return stores.find(s => s.id === inStockAvailability[0].storeId);
   };
 
   const addIngredientToMeal = () => {
@@ -52,6 +50,11 @@ const MealManager: React.FC = () => {
 
   const updateIngredient = (index: number, field: 'ingredientId' | 'quantity', value: string | number) => {
     const updated = [...selectedIngredients];
+    
+    if (field === 'quantity' && typeof value === 'number' && (isNaN(value) || value <= 0)) {
+      value = 1; // Default to 1 if invalid number
+    }
+    
     updated[index] = { ...updated[index], [field]: value };
     setSelectedIngredients(updated);
   };
@@ -79,20 +82,28 @@ const MealManager: React.FC = () => {
   };
 
   const saveMeal = () => {
-    if (!newMeal.name || selectedIngredients.length === 0) {
-      alert('Please provide a meal name and at least one ingredient');
+    if (!newMeal.name?.trim()) {
+      alert('Please provide a meal name');
+      return;
+    }
+    
+    const validIngredients = selectedIngredients.filter(ing => ing.ingredientId);
+    if (validIngredients.length === 0) {
+      alert('Please add at least one ingredient');
       return;
     }
 
     const mealToSave: Meal = {
       id: Date.now().toString(),
-      name: newMeal.name!,
-      description: newMeal.description || '',
+      name: newMeal.name!.trim(),
+      description: newMeal.description?.trim() || '',
       category: newMeal.category as 'breakfast' | 'lunch' | 'dinner',
       prepTime: newMeal.prepTime || 30,
       servings: newMeal.servings || 4,
-      ingredients: selectedIngredients.filter(ing => ing.ingredientId),
-      instructions: (newMeal.instructions || ['']).filter(inst => inst.trim())
+      ingredients: validIngredients,
+      instructions: (newMeal.instructions || ['']).filter(inst => inst.trim()).length > 0 
+        ? (newMeal.instructions || ['']).filter(inst => inst.trim())
+        : ['No instructions provided']
     };
 
     // Add to meals array (in a real app, this would be an API call)
@@ -105,7 +116,6 @@ const MealManager: React.FC = () => {
       category: 'dinner',
       prepTime: 30,
       servings: 4,
-      ingredients: [],
       instructions: ['']
     });
     setSelectedIngredients([]);
@@ -120,7 +130,6 @@ const MealManager: React.FC = () => {
       category: 'dinner',
       prepTime: 30,
       servings: 4,
-      ingredients: [],
       instructions: ['']
     });
     setSelectedIngredients([]);
@@ -177,10 +186,25 @@ const MealManager: React.FC = () => {
                   {meal.ingredients.length} ingredients
                 </span>
                 <div className="flex space-x-2">
-                  <button className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-150">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering the parent onClick
+                      alert('Edit functionality not implemented yet');
+                    }} 
+                    className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-150"
+                  >
                     <Edit2 size={16} />
                   </button>
-                  <button className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-150">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering the parent onClick
+                      if (window.confirm(`Are you sure you want to delete ${meal.name}?`)) {
+                        // In a real app, this would call an API to delete the meal
+                        alert('Delete functionality not implemented yet');
+                      }
+                    }} 
+                    className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-150"
+                  >
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -246,14 +270,16 @@ const MealManager: React.FC = () => {
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-3">Instructions</h4>
                 <div className="space-y-2">
-                  {selectedMeal.instructions.map((instruction, index) => (
+                  {selectedMeal.instructions?.map((instruction, index) => (
                     <div key={index} className="flex items-start">
                       <span className="flex-shrink-0 w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-sm font-medium mr-3 mt-0.5">
                         {index + 1}
                       </span>
                       <p className="text-gray-700">{instruction}</p>
                     </div>
-                  ))}
+                  )) || (
+                    <p className="text-gray-500 italic">No instructions available</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -348,39 +374,42 @@ const MealManager: React.FC = () => {
                     </button>
                   </div>
                   <div className="space-y-3">
-                    {selectedIngredients.map((ingredient, index) => (
-                      <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                        <select
-                          value={ingredient.ingredientId}
-                          onChange={(e) => updateIngredient(index, 'ingredientId', e.target.value)}
-                          className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                        >
-                          <option value="">Select ingredient</option>
-                          {ingredients.map((ing) => (
-                            <option key={ing.id} value={ing.id}>
-                              {ing.name}
-                            </option>
-                          ))}
-                        </select>
-                        <input
-                          type="number"
-                          value={ingredient.quantity}
-                          onChange={(e) => updateIngredient(index, 'quantity', parseFloat(e.target.value))}
-                          className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                          min="0.1"
-                          step="0.1"
-                          placeholder="Qty"
-                        />
-                        <button
-                          onClick={() => removeIngredient(index)}
-                          className="text-red-600 hover:text-red-700 p-2"
-                        >
-                          ×
-                        </button>
+                    {selectedIngredients.length > 0 ? (
+                      selectedIngredients.map((ingredient, index) => (
+                        <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                          <select
+                            value={ingredient.ingredientId}
+                            onChange={(e) => updateIngredient(index, 'ingredientId', e.target.value)}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                          >
+                            <option value="">Select ingredient</option>
+                            {ingredients.map((ing) => (
+                              <option key={ing.id} value={ing.id}>
+                                {ing.name}
+                              </option>
+                            ))}
+                          </select>
+                          <input
+                            type="number"
+                            value={ingredient.quantity}
+                            onChange={(e) => updateIngredient(index, 'quantity', parseFloat(e.target.value))}
+                            className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                            min="0.1"
+                            step="0.1"
+                            placeholder="Qty"
+                          />
+                          <button
+                            onClick={() => removeIngredient(index)}
+                            className="text-red-600 hover:text-red-700 p-2"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-3 bg-gray-50 rounded-lg">
+                        <p className="text-gray-500 text-sm italic">No ingredients added yet. Click "Add Ingredient" to start.</p>
                       </div>
-                    ))}
-                    {selectedIngredients.length === 0 && (
-                      <p className="text-gray-500 text-sm italic">No ingredients added yet</p>
                     )}
                   </div>
                 </div>
@@ -396,7 +425,7 @@ const MealManager: React.FC = () => {
                     </button>
                   </div>
                   <div className="space-y-3">
-                    {(Array.isArray(newMeal.instructions) ? newMeal.instructions : ['']).map((instruction, index) => (
+                    {(newMeal.instructions || ['']).map((instruction, index) => (
                       <div key={index} className="flex items-start space-x-3">
                         <span className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-sm font-medium mt-1">
                           {index + 1}
@@ -408,7 +437,7 @@ const MealManager: React.FC = () => {
                           rows={2}
                           placeholder={`Step ${index + 1} instructions`}
                         />
-                        {(Array.isArray(newMeal.instructions) ? newMeal.instructions : ['']).length > 1 && (
+                        {(newMeal.instructions || ['']).length > 1 && (
                           <button
                             onClick={() => removeInstruction(index)}
                             className="text-red-600 hover:text-red-700 p-2 mt-1"
