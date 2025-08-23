@@ -29,9 +29,9 @@ export const ingredients: Ingredient[] = [
     name: 'Chicken Thighs',
     category: 'protein',
     availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', price: 8.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 7.49, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 8.29, preferenceRank: 3 }
     ]
   },
   {
@@ -82,30 +82,30 @@ export const ingredients: Ingredient[] = [
     id: '6',
     name: 'Onions',
     category: 'vegetable',
-    availability: [
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true },
-      { storeId: '5', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', price: 12.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 4.49, preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'fair', price: 5.99, preferenceRank: 3 },
+      { storeId: '5', inStock: true, quality: 'excellent', price: 2.99, preferenceRank: 1 }
     ]
   },
   {
     id: '7',
-    name: 'Soy Sauce',
-    category: 'condiment',
-    availability: [
-      { storeId: '2', inStock: true },
-      { storeId: '5', inStock: true }
+      { storeId: '1', inStock: true, quality: 'good', price: 3.49, preferenceRank: 2 },
+      { storeId: '2', inStock: true, quality: 'fair', price: 2.99, preferenceRank: 3 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
+      { storeId: '5', inStock: false, quality: 'good', price: 3.99, preferenceRank: 2 }
     ]
   },
   {
     id: '8',
     name: 'Milk',
     category: 'dairy',
-    availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
+      { storeId: '2', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'fair', price: 1.49, preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', price: 2.49, preferenceRank: 3 }
       { storeId: '4', inStock: true }
     ]
   },
@@ -113,8 +113,8 @@ export const ingredients: Ingredient[] = [
     id: '9',
     name: 'Steak Seasoning',
     category: 'spice',
-    availability: [
-      { storeId: '2', inStock: true },
+      { storeId: '2', inStock: true, quality: 'good', price: 2.49, preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', price: 3.99, preferenceRank: 1 }
       { storeId: '4', inStock: true }
     ]
   },
@@ -122,10 +122,10 @@ export const ingredients: Ingredient[] = [
     id: '10',
     name: 'Potatoes',
     category: 'vegetable',
-    availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
+      { storeId: '1', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 4.29, preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'fair', price: 3.49, preferenceRank: 4 }
       { storeId: '4', inStock: true }
     ]
   },
@@ -133,8 +133,8 @@ export const ingredients: Ingredient[] = [
     id: '11',
     name: 'Eggs',
     category: 'protein',
-    availability: [
-      { storeId: '1', inStock: true },
+      { storeId: '2', inStock: true, quality: 'good', price: 3.49, preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'good', price: 3.49, preferenceRank: 1 }
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true },
       { storeId: '4', inStock: true }
@@ -142,10 +142,10 @@ export const ingredients: Ingredient[] = [
     ]
   },
   {
-    id: '12',
-    name: 'Bread',
-    category: 'starch',
-    availability: [
+      { storeId: '1', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 4.29, preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'fair', price: 3.49, preferenceRank: 3 }
       { storeId: '2', inStock: true },
       { storeId: '3', inStock: true }
     ]
@@ -153,10 +153,10 @@ export const ingredients: Ingredient[] = [
   {
     id: '13',
     name: 'Yogurt',
-    category: 'dairy',
-    availability: [
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', price: 3.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 2.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 3.29, preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'fair', price: 2.49, preferenceRank: 4 }
     ]
   },
   {
@@ -164,8 +164,8 @@ export const ingredients: Ingredient[] = [
     name: 'Berries',
     category: 'fruit',
     availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
+      { storeId: '2', inStock: true, quality: 'good', price: 2.99, preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 3.49, preferenceRank: 2 }
       { storeId: '3', inStock: false }
     ]
   }
@@ -173,8 +173,8 @@ export const ingredients: Ingredient[] = [
 
 export const meals: Meal[] = [
   {
-    id: '1',
-    name: 'Chicken and Rice Bowl',
+      { storeId: '2', inStock: true, quality: 'good', price: 4.99, preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 5.49, preferenceRank: 2 }
     category: 'dinner',
     servings: 4,
     prepTime: 30,
@@ -182,9 +182,9 @@ export const meals: Meal[] = [
       { ingredientId: '1', quantity: 1.5 },
       { ingredientId: '2', quantity: 2 },
       { ingredientId: '3', quantity: 1 }
-    ]
-  },
-  {
+      { storeId: '1', inStock: true, quality: 'excellent', price: 6.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 5.99, preferenceRank: 2 },
+      { storeId: '3', inStock: false, quality: 'fair', price: 4.99, preferenceRank: 3 }
     id: '2',
     name: 'Beef Stir Fry',
     category: 'dinner',
@@ -192,9 +192,9 @@ export const meals: Meal[] = [
     prepTime: 25,
     ingredients: [
       { ingredientId: '4', quantity: 2 },
-      { ingredientId: '5', quantity: 1 },
-      { ingredientId: '6', quantity: 0.5 },
-      { ingredientId: '7', quantity: 1 }
+      { storeId: '2', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 2.49, preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', price: 1.99, preferenceRank: 1 }
     ]
   },
   {
@@ -202,9 +202,9 @@ export const meals: Meal[] = [
     name: 'Breakfast Bowl',
     category: 'breakfast',
     servings: 2,
-    prepTime: 10,
-    ingredients: [
-      { ingredientId: '12', quantity: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 1.49, preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 1.99, preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', price: 1.49, preferenceRank: 1 }
       { ingredientId: '13', quantity: 0.5 },
       { ingredientId: '14', quantity: 1 }
     ]
@@ -212,29 +212,29 @@ export const meals: Meal[] = [
   {
     id: '4',
     name: 'Scrambled Eggs',
-    category: 'breakfast',
-    servings: 3,
-    prepTime: 15,
-    ingredients: [
-      { ingredientId: '11', quantity: 1 }
+      { storeId: '1', inStock: true, quality: 'excellent', price: 5.99, preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', price: 4.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 6.49, preferenceRank: 3 }
+      { storeId: '2', inStock: true, quality: 'good', price: 5.49, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', price: 6.29, preferenceRank: 3 }
     ]
   }
 ];
 
 export const plannedMeals: PlannedMeal[] = [
-  {
-    id: '1',
-    mealId: '1',
-    date: '2025-01-15',
-    mealType: 'dinner'
+      { storeId: '2', inStock: true, quality: 'good', price: 1.99, preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'excellent', price: 2.49, preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'good', price: 1.99, preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'fair', price: 1.49, preferenceRank: 3 }
+      { storeId: '4', inStock: true, quality: 'good', price: 2.99, preferenceRank: 2 }
   },
   {
     id: '2',
     mealId: '2',
     date: '2025-01-16',
     mealType: 'dinner'
-  },
-  {
+      { storeId: '3', inStock: true, quality: 'excellent', price: 2.99, preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', price: 2.49, preferenceRank: 1 }
     id: '3',
     mealId: '3',
     date: '2025-01-17',
@@ -242,8 +242,8 @@ export const plannedMeals: PlannedMeal[] = [
   },
   {
     id: '4',
-    mealId: '4',
-    date: '2025-01-15',
+      { storeId: '3', inStock: true, quality: 'good', price: 3.99, preferenceRank: 2 },
+      { storeId: '5', inStock: true, quality: 'excellent', price: 4.99, preferenceRank: 1 }
     mealType: 'breakfast'
   }
 ];

@@ -14,11 +14,14 @@ export interface IngredientAvailability {
   storeId: string;
   inStock: boolean;
   quality: 'excellent' | 'good' | 'fair';
+  price: number;
+  preferenceRank: number; // 1 = highest preference, higher numbers = lower preference
 }
 
 export interface MealIngredient {
   ingredientId: string;
   quantity: number;
+  preferredStores?: string[]; // Optional override for specific meal context
 }
 
 export interface Meal {

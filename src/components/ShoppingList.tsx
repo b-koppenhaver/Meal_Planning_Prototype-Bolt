@@ -44,7 +44,8 @@ const ShoppingList: React.FC = () => {
       return {
         ingredientId,
         quantity,
-        bestStore: bestStore?.name || 'Unknown'
+        bestStore: 'Unknown',
+        estimatedCost: 0
       };
     });
   };
@@ -74,13 +75,16 @@ const ShoppingList: React.FC = () => {
         const primaryStore = stores.find(s => s.name === primaryStoreName);
         if (primaryStore) {
           const availability = ingredient.availability.find(a => 
-            a.storeId === primaryStore.id && a.inStock
-          );
+        const availabilities = ingredient.availability.filter(a => 
+          a.storeId === primaryStore.id && a.inStock
           if (availability) {
-            return {
+        if (availabilities.length > 0) {
+          // Use the best availability at this store (lowest preference rank)
+          const bestAvailability = availabilities.sort((a, b) => a.preferenceRank - b.preferenceRank)[0];
               ...item,
               bestStore: primaryStoreName
-            };
+            bestStore: primaryStoreName,
+            estimatedCost: bestAvailability.price * item.quantity
           }
         }
       }
@@ -269,18 +273,27 @@ const ShoppingList: React.FC = () => {
                             {ingredient.name}
                           </h4>
                           <p className="text-sm text-gray-600">
-                            {item.bestStore}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+    // Find best store based on preference rank and availability
+    const inStockAvailability = ingredient.availability.filter(a => a.inStock);
+    const availabilityToConsider = inStockAvailability.length > 0 
+      ? inStockAvailability 
+      : ingredient.availability;
+    
+    // Sort by preference rank (lower number = higher preference), then by price
+    const bestAvailability = availabilityToConsider.sort((a, b) => {
+      if (a.preferenceRank !== b.preferenceRank) {
+        return a.preferenceRank - b.preferenceRank;
+      }
+      return a.price - b.price;
+    })[0];
                   );
                 })}
               </div>
             </div>
           )}
         </div>
-      )}
+      bestStore: bestStore?.name || 'Unknown',
+      estimatedCost: (bestAvailability?.price || 0) * quantity
     </div>
   );
 };
