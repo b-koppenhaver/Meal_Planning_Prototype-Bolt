@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Store, MapPin, TrendingUp, Package, DollarSign } from 'lucide-react';
+import { Store, MapPin, TrendingUp, Package } from 'lucide-react';
 import { stores, ingredients } from '../data/mockData';
 
 const StoreManager: React.FC = () => {
@@ -19,11 +19,6 @@ const StoreManager: React.FC = () => {
       ingredient.availability.find(avail => avail.storeId === storeId)?.inStock
     ).length;
     
-    const averagePrice = storeIngredients.reduce((sum, ingredient) => {
-      const availability = ingredient.availability.find(avail => avail.storeId === storeId);
-      return sum + (availability?.price || 0);
-    }, 0) / totalIngredients;
-
     return {
       totalIngredients,
       inStockCount
@@ -121,34 +116,6 @@ const StoreManager: React.FC = () => {
                           </div>
                         </div>
                       </div>
-                      
-                      <div className="p-4 bg-orange-50 rounded-lg">
-                        <div className="flex items-center">
-                          <DollarSign className="h-8 w-8 text-orange-600 mr-3" />
-                          <div>
-                            <p className="text-sm font-medium text-gray-600">Avg. Price</p>
-                            <p className="text-2xl font-bold text-gray-900">${stats.averagePrice.toFixed(2)}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mb-6 p-4 bg-purple-50 rounded-lg">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Average Preference Rank</p>
-                          <p className="text-lg font-bold text-gray-900">{stats.averagePreferenceRank.toFixed(1)}</p>
-                          <p className="text-xs text-gray-500">Lower is better (1 = highest preference)</p>
-                        </div>
-                        <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          stats.averagePreferenceRank <= 1.5 ? 'bg-green-100 text-green-800' :
-                          stats.averagePreferenceRank <= 2.5 ? 'bg-yellow-100 text-yellow-800' :
-                          'bg-red-100 text-red-800'
-                        }`}>
-                          {stats.averagePreferenceRank <= 1.5 ? 'Preferred' :
-                           stats.averagePreferenceRank <= 2.5 ? 'Good' : 'Fair'}
-                        </div>
-                      </div>
                     </div>
 
                     <div>
@@ -188,9 +155,6 @@ const StoreManager: React.FC = () => {
                                     {availability.inStock ? 'In Stock' : 'Out of Stock'}
                                   </span>
                                 </div>
-                              </div>
-                              <div className="text-right">
-                                <p className="text-lg font-bold text-gray-900">${availability.price.toFixed(2)}</p>
                               </div>
                             </div>
                           );
