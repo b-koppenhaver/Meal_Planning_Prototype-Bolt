@@ -1,8 +1,6 @@
 export interface Store {
   id: string;
   name: string;
-  location: string;
-  type: 'grocery' | 'butcher' | 'farmer' | 'specialty';
 }
 
 export interface Ingredient {
