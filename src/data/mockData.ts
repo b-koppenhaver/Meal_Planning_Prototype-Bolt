@@ -42,8 +42,7 @@ export const ingredients: Ingredient[] = [
       { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
       { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
       { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 2 }
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 4 }
     ]
   },
   {
@@ -169,7 +168,7 @@ export const ingredients: Ingredient[] = [
       { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 3 },
       { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 }
     ]
-  }
+  },
   {
     id: '15',
     name: 'Soy Sauce',
