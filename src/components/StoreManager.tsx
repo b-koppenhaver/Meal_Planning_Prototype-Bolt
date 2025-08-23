@@ -26,8 +26,7 @@ const StoreManager: React.FC = () => {
 
     return {
       totalIngredients,
-      inStockCount,
-      averagePrice: isNaN(averagePrice) ? 0 : averagePrice
+      inStockCount
     };
   };
 
