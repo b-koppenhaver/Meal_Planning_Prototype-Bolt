@@ -29,23 +29,32 @@ const ShoppingList: React.FC = () => {
         return {
           ingredientId,
           quantity,
-          bestStore: 'Unknown'
+          bestStore: 'Unknown',
+          estimatedCost: 0
         };
       }
 
-      // Find a store with availability
+      // Find best store based on preference rank and availability
       const inStockAvailability = ingredient.availability.filter(a => a.inStock);
-      const bestAvailability = inStockAvailability.length > 0 
-        ? inStockAvailability[0]
-        : ingredient.availability[0];
+      const availabilityToConsider = inStockAvailability.length > 0 
+        ? inStockAvailability 
+        : ingredient.availability;
+      
+      // Sort by preference rank (lower number = higher preference), then by price
+      const bestAvailability = availabilityToConsider.sort((a, b) => {
+        if (a.preferenceRank !== b.preferenceRank) {
+          return a.preferenceRank - b.preferenceRank;
+        }
+        return a.price - b.price;
+      })[0];
 
       const bestStore = stores.find(s => s.id === bestAvailability?.storeId);
       
       return {
         ingredientId,
         quantity,
-        bestStore: 'Unknown',
-        estimatedCost: 0
+        bestStore: bestStore?.name || 'Unknown',
+        estimatedCost: (bestAvailability?.price || 0) * quantity
       };
     });
   };
@@ -74,17 +83,17 @@ const ShoppingList: React.FC = () => {
       for (const primaryStoreName of primaryStores) {
         const primaryStore = stores.find(s => s.name === primaryStoreName);
         if (primaryStore) {
-          const availability = ingredient.availability.find(a => 
-        const availabilities = ingredient.availability.filter(a => 
-          a.storeId === primaryStore.id && a.inStock
-          if (availability) {
-        if (availabilities.length > 0) {
-          // Use the best availability at this store (lowest preference rank)
-          const bestAvailability = availabilities.sort((a, b) => a.preferenceRank - b.preferenceRank)[0];
+          const availabilities = ingredient.availability.filter(a => 
+            a.storeId === primaryStore.id && a.inStock
+          );
+          if (availabilities.length > 0) {
+            // Use the best availability at this store (lowest preference rank)
+            const bestAvailability = availabilities.sort((a, b) => a.preferenceRank - b.preferenceRank)[0];
+            return {
               ...item,
-              bestStore: primaryStoreName
-            bestStore: primaryStoreName,
-            estimatedCost: bestAvailability.price * item.quantity
+              bestStore: primaryStoreName,
+              estimatedCost: bestAvailability.price * item.quantity
+            };
           }
         }
       }
@@ -92,6 +101,7 @@ const ShoppingList: React.FC = () => {
       return item;
     });
   };
+
   const rawShoppingList = generateShoppingList();
   const shoppingList = optimizeStoreSelection(rawShoppingList);
   const uniqueStores = new Set(shoppingList.map(item => item.bestStore)).size;
@@ -224,7 +234,14 @@ const ShoppingList: React.FC = () => {
                                 }`}>
                                   {ingredient.name}
                                 </h4>
+                                <p className="text-sm text-gray-600">
+                                  Qty: {item.quantity.toFixed(1)} • ${item.estimatedCost.toFixed(2)}
+                                </p>
                               </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="text-sm font-medium text-gray-700">${item.estimatedCost.toFixed(2)}</p>
+                              <p className="text-xs text-gray-500">Qty: {item.quantity.toFixed(1)}</p>
                             </div>
                           </div>
                         );
@@ -273,27 +290,35 @@ const ShoppingList: React.FC = () => {
                             {ingredient.name}
                           </h4>
                           <p className="text-sm text-gray-600">
-    // Find best store based on preference rank and availability
-    const inStockAvailability = ingredient.availability.filter(a => a.inStock);
-    const availabilityToConsider = inStockAvailability.length > 0 
-      ? inStockAvailability 
-      : ingredient.availability;
-    
-    // Sort by preference rank (lower number = higher preference), then by price
-    const bestAvailability = availabilityToConsider.sort((a, b) => {
-      if (a.preferenceRank !== b.preferenceRank) {
-        return a.preferenceRank - b.preferenceRank;
-      }
-      return a.price - b.price;
-    })[0];
+                            {item.bestStore} • Qty: {item.quantity.toFixed(1)} • ${item.estimatedCost.toFixed(2)}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-gray-700">${item.estimatedCost.toFixed(2)}</p>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
             </div>
           )}
         </div>
-      bestStore: bestStore?.name || 'Unknown',
-      estimatedCost: (bestAvailability?.price || 0) * quantity
+      )}
+      
+      {shoppingList.length > 0 && (
+        <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-semibold text-gray-900">Shopping Summary</h3>
+            <div className="text-right">
+              <p className="text-2xl font-bold text-gray-900">
+                ${shoppingList.reduce((total, item) => total + item.estimatedCost, 0).toFixed(2)}
+              </p>
+              <p className="text-sm text-gray-600">Total estimated cost</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

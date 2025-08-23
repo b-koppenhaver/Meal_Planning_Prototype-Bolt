@@ -132,6 +132,24 @@ const StoreManager: React.FC = () => {
                         </div>
                       </div>
                     </div>
+                    
+                    <div className="mb-6 p-4 bg-purple-50 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-gray-600">Average Preference Rank</p>
+                          <p className="text-lg font-bold text-gray-900">{stats.averagePreferenceRank.toFixed(1)}</p>
+                          <p className="text-xs text-gray-500">Lower is better (1 = highest preference)</p>
+                        </div>
+                        <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+                          stats.averagePreferenceRank <= 1.5 ? 'bg-green-100 text-green-800' :
+                          stats.averagePreferenceRank <= 2.5 ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
+                        }`}>
+                          {stats.averagePreferenceRank <= 1.5 ? 'Preferred' :
+                           stats.averagePreferenceRank <= 2.5 ? 'Good' : 'Fair'}
+                        </div>
+                      </div>
+                    </div>
 
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">Available Ingredients</h4>
@@ -145,6 +163,13 @@ const StoreManager: React.FC = () => {
                             good: 'text-blue-600 bg-blue-50',
                             fair: 'text-orange-600 bg-orange-50'
                           };
+                          
+                          const preferenceColors = {
+                            1: 'text-green-600 bg-green-50',
+                            2: 'text-blue-600 bg-blue-50',
+                            3: 'text-yellow-600 bg-yellow-50'
+                          };
+                          const preferenceColor = preferenceColors[availability.preferenceRank as keyof typeof preferenceColors] || 'text-gray-600 bg-gray-50';
 
                           return (
                             <div key={ingredient.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-150">
@@ -153,6 +178,9 @@ const StoreManager: React.FC = () => {
                                 <div className="flex items-center mt-1 space-x-4">
                                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${qualityColors[availability.quality]}`}>
                                     {availability.quality}
+                                  </span>
+                                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${preferenceColor}`}>
+                                    Rank #{availability.preferenceRank}
                                   </span>
                                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                                     availability.inStock ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
