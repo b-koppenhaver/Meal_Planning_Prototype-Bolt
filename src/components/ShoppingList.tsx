@@ -220,9 +220,6 @@ const ShoppingList: React.FC = () => {
                                 }`}>
                                   {ingredient.name}
                                 </h4>
-                                <p className="text-sm text-gray-600">
-                                  {item.quantity.toFixed(1)}
-                                </p>
                               </div>
                             </div>
                           </div>
@@ -272,7 +269,7 @@ const ShoppingList: React.FC = () => {
                             {ingredient.name}
                           </h4>
                           <p className="text-sm text-gray-600">
-                            {item.quantity.toFixed(1)} • {item.bestStore}
+                            {item.bestStore}
                           </p>
                         </div>
                       </div>
