@@ -152,7 +152,6 @@ const StoreManager: React.FC = () => {
                               <div>
                                 <h5 className="font-medium text-gray-900">{ingredient.name}</h5>
                                 <div className="flex items-center mt-1 space-x-4">
-                                  <span className="text-sm text-gray-600 capitalize">{ingredient.category}</span>
                                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${qualityColors[availability.quality]}`}>
                                     {availability.quality}
                                   </span>
