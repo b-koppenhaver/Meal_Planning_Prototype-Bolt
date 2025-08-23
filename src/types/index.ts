@@ -6,8 +6,7 @@ export interface Store {
 export interface Ingredient {
   id: string;
   name: string;
-  category: 'protein' | 'vegetable' | 'fruit' | 'grain' | 'dairy' | 'spice' | 'other';
-  unit: string;
+  category: 'protein' | 'vegetable' | 'fruit' | 'starch' | 'dairy' | 'spice' | 'other';
   availability: IngredientAvailability[];
 }
 
