@@ -396,7 +396,7 @@ const MealManager: React.FC = () => {
                     </button>
                   </div>
                   <div className="space-y-3">
-                    {(newMeal.instructions || ['']).map((instruction, index) => (
+                    {(Array.isArray(newMeal.instructions) ? newMeal.instructions : ['']).map((instruction, index) => (
                       <div key={index} className="flex items-start space-x-3">
                         <span className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-sm font-medium mt-1">
                           {index + 1}
@@ -408,7 +408,7 @@ const MealManager: React.FC = () => {
                           rows={2}
                           placeholder={`Step ${index + 1} instructions`}
                         />
-                        {(newMeal.instructions || ['']).length > 1 && (
+                        {(Array.isArray(newMeal.instructions) ? newMeal.instructions : ['']).length > 1 && (
                           <button
                             onClick={() => removeInstruction(index)}
                             className="text-red-600 hover:text-red-700 p-2 mt-1"
