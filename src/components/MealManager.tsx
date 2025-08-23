@@ -360,7 +360,7 @@ const MealManager: React.FC = () => {
                           <option value="">Select ingredient</option>
                           {ingredients.map((ing) => (
                             <option key={ing.id} value={ing.id}>
-                              {ing.name} ({ing.unit})
+                              {ing.name}
                             </option>
                           ))}
                         </select>
