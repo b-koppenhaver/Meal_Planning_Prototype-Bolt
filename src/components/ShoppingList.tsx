@@ -192,7 +192,6 @@ const ShoppingList: React.FC = () => {
                           {storeDetails && (
                             <div className="flex items-center mt-1 text-sm text-gray-600">
                               <MapPin size={14} className="mr-1" />
-                              {storeDetails.location}
                             </div>
                           )}
                         </div>
