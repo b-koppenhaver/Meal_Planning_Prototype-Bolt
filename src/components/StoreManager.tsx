@@ -100,8 +100,6 @@ const StoreManager: React.FC = () => {
                           <MapPin size={16} className="mr-2" />
                         </div>
                       </div>
-                    
-                      </span>
                     </div>
 
                     <div className="grid grid-cols-3 gap-4 mb-6">
