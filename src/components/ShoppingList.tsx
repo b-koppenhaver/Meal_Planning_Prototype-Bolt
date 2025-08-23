@@ -225,15 +225,6 @@ const ShoppingList: React.FC = () => {
                                 </p>
                               </div>
                             </div>
-                            <div className="text-right">
-                              <p className={`font-semibold ${
-                                checkedItems.has(item.ingredientId) 
-                                  ? 'text-gray-500 line-through' 
-                                  : 'text-gray-900'
-                              }`}>
-                                {item.quantity.toFixed(1)} {ingredient.category}
-                              </p>
-                            </div>
                           </div>
                         );
                       })}
@@ -284,15 +275,6 @@ const ShoppingList: React.FC = () => {
                             {item.quantity.toFixed(1)} • {item.bestStore}
                           </p>
                         </div>
-                      </div>
-                      <div className="text-right">
-                        <p className={`font-semibold ${
-                          checkedItems.has(item.ingredientId) 
-                            ? 'text-gray-500 line-through' 
-                            : 'text-gray-900'
-                        }`}>
-                          {ingredient.category}
-                        </p>
                       </div>
                     </div>
                   );
