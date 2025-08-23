@@ -194,7 +194,6 @@ const StoreManager: React.FC = () => {
                               </div>
                               <div className="text-right">
                                 <p className="text-lg font-bold text-gray-900">${availability.price.toFixed(2)}</p>
-                                <p className="text-sm text-gray-600">per {ingredient.unit}</p>
                               </div>
                             </div>
                           );
