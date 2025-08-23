@@ -309,7 +309,7 @@ const MealPlanner: React.FC = () => {
                         const scaledQuantity = (mealIng.quantity * newPlannedMeal.servings) / selectedMeal.servings;
                         return (
                           <div key={index}>
-                            • {ingredient.name}: {scaledQuantity.toFixed(1)} {ingredient.unit}
+                            • {ingredient.name}: {scaledQuantity.toFixed(1)}
                           </div>
                         );
                       });
