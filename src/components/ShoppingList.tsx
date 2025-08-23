@@ -241,7 +241,7 @@ const ShoppingList: React.FC = () => {
                                   {ingredient.name}
                                 </h4>
                                 <p className="text-sm text-gray-600">
-                                  {item.quantity.toFixed(1)} {ingredient.unit}
+                                  {item.quantity.toFixed(1)}
                                 </p>
                               </div>
                             </div>
