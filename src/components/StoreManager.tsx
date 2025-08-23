@@ -100,9 +100,7 @@ const StoreManager: React.FC = () => {
                           <MapPin size={16} className="mr-2" />
                         </div>
                       </div>
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium flex items-center ${getStoreTypeColor(store.type)}`}>
-                        {getStoreTypeIcon(store.type)}
-                        <span className="ml-2 capitalize">{store.type}</span>
+                    
                       </span>
                     </div>
 
