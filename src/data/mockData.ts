@@ -39,11 +39,11 @@ export const ingredients: Ingredient[] = [
     name: 'Rice',
     category: 'starch',
     availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true },
-      { storeId: '4', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 2 }
     ]
   },
   {
@@ -51,11 +51,10 @@ export const ingredients: Ingredient[] = [
     name: 'Broccoli',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true },
-      { storeId: '4', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 4 }
     ]
   },
   {
@@ -63,9 +62,9 @@ export const ingredients: Ingredient[] = [
     name: 'Ground Beef',
     category: 'protein',
     availability: [
-      { storeId: '1', inStock: true },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -73,9 +72,9 @@ export const ingredients: Ingredient[] = [
     name: 'Bell Peppers',
     category: 'vegetable',
     availability: [
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true }
+      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -83,23 +82,20 @@ export const ingredients: Ingredient[] = [
     name: 'Onions',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
-      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 1 }
+      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 1 }    
     ]
   },
   {
     id: '7',
-    name: 'Tomatoes',
+    name: 'Cherry Tomatoes',
     category: 'vegetable',
     availability: [
-      { storeId: '1', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 3 },
-      { storeId: '3', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '5', inStock: false, quality: 'good', preferenceRank: 2 }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 4 }
     ]
   },
   {
@@ -107,11 +103,10 @@ export const ingredients: Ingredient[] = [
     name: 'Milk',
     category: 'dairy',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
-      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 2 },
-      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 3 },
-      { storeId: '4', inStock: true }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -119,9 +114,8 @@ export const ingredients: Ingredient[] = [
     name: 'Steak Seasoning',
     category: 'spice',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '5', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '4', inStock: true }
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 2 },    
     ]
   },
   {
@@ -130,10 +124,9 @@ export const ingredients: Ingredient[] = [
     category: 'vegetable',
     availability: [
       { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 4 },
-      { storeId: '4', inStock: true }
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -141,12 +134,10 @@ export const ingredients: Ingredient[] = [
     name: 'Eggs',
     category: 'protein',
     availability: [
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
       { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
-      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 1 },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true },
-      { storeId: '4', inStock: true }
-
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -154,12 +145,10 @@ export const ingredients: Ingredient[] = [
     name: 'Cheese',
     category: 'dairy',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 3 },
+      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
       { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 3 },
-      { storeId: '2', inStock: true },
-      { storeId: '3', inStock: true }
+      { storeId: '4', inStock: true, quality: 'good', preferenceRank: 3 }
     ]
   },
   {
@@ -167,10 +156,8 @@ export const ingredients: Ingredient[] = [
     name: 'Yogurt',
     category: 'dairy',
     availability: [
-      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
       { storeId: '2', inStock: true, quality: 'good', preferenceRank: 2 },
-      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 3 },
-      { storeId: '4', inStock: true, quality: 'fair', preferenceRank: 4 }
+      { storeId: '3', inStock: true, quality: 'excellent', preferenceRank: 1 }
     ]
   },
   {
@@ -178,9 +165,9 @@ export const ingredients: Ingredient[] = [
     name: 'Berries',
     category: 'fruit',
     availability: [
-      { storeId: '2', inStock: true, quality: 'good', preferenceRank: 1 },
-      { storeId: '3', inStock: true, quality: 'excellent', preferenceRank: 2 },
-      { storeId: '3', inStock: false }
+      { storeId: '1', inStock: true, quality: 'excellent', preferenceRank: 1 },
+      { storeId: '2', inStock: true, quality: 'fair', preferenceRank: 3 },
+      { storeId: '3', inStock: true, quality: 'good', preferenceRank: 2 }
     ]
   }
 ];
