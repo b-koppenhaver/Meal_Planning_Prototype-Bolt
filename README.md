@@ -5,3 +5,4 @@ Solution: Build a weekly meal planning dashboard with a grocery list
     Regularly schedule meals that yield leftovers
     Minimize the number of stores that ingredients come from
     Allow the ability to add meals which automatically updates the shopping list with the associated ingredients
+    Include at least 1 meal per week using all non-perishable ingredients to accommodate unexpected schedule changes
